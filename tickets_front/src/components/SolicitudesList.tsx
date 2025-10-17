@@ -10,7 +10,7 @@ export function SolicitudesList({ filter }: { filter?: string }) {
     const data = await apiGet("/solicitudes/");
     setList(data);
   }
-
+//ss
   useEffect(() => {
     load();
   }, []);
