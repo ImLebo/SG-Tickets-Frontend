@@ -1,4 +1,4 @@
-import { getTecnicos, createTecnico } from "../services/tecnicoServices.tsx";
+import { getTecnicos, createTecnico } from "../services/tecnicoServices";
 import type { Tecnico} from "../services/tecnicoServices.tsx";
 
 export const fetchTecnicos = async (): Promise<Tecnico[]> => {

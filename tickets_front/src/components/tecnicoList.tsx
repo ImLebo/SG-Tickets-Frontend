@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Tecnico } from "../services/tecnicoServices.tsx";
-import { fetchTecnicos } from "../controller/tecnicoController.tsx";
+import { fetchTecnicos } from "../controller/tecnicoController";
 
 const TecnicoList: React.FC = () => {
   const [tecnicos, setTecnicos] = useState<Tecnico[]>([]);
