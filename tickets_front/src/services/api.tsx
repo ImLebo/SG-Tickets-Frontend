@@ -1,16 +1,29 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_URL = "http://127.0.0.1:8000";
 
-async function request(path: string, method = "GET", body?: any) {
-  const res = await fetch(API_BASE + path, {
+async function request(method: string, endpoint: string, data?: any, token?: string) {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+
+  // 🟢 Si hay token, lo agrega automáticamente
+  const authToken = token || localStorage.getItem("token");
+  if (authToken) headers["Authorization"] = `Bearer ${authToken}`;
+
+  const res = await fetch(`${API_URL}${endpoint}`, {
     method,
-    headers: { "Content-Type": "application/json" },
-    body: body ? JSON.stringify(body) : undefined,
+    headers,
+    body: data ? JSON.stringify(data) : undefined,
   });
-  if (!res.ok) throw new Error(await res.text());
+
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(error);
+  }
+
   return res.json();
 }
 
-export const apiGet = (path: string) => request(path, "GET");
-export const apiPost = (path: string, body: any) => request(path, "POST", body);
-export const apiPut = (path: string, body: any) => request(path, "PUT", body);
-export const apiDelete = (path: string) => request(path, "DELETE");
+export const apiGet = (endpoint: string, token?: string) => request("GET", endpoint, undefined, token);
+export const apiPost = (endpoint: string, data: any, token?: string) => request("POST", endpoint, data, token);
+export const apiPut = (endpoint: string, data: any, token?: string) => request("PUT", endpoint, data, token);
+export const apiDelete = (endpoint: string, token?: string) => request("DELETE", endpoint, undefined, token);
