@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Tecnico } from "../services/tecnicoServices.tsx";
-import { addTecnico } from "../controller/tecnicoController.tsx";
+import { addTecnico } from "../controller/tecnicoController";
 
 interface Props {
   onSuccess: () => void;

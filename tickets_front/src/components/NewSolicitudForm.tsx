@@ -1,3 +1,4 @@
+//components/NewSolicitudForm.tsx
 import { useState } from "react";
 import { apiPost } from "../services/api";
 import { useAuth } from "../context/AuthContext";
@@ -24,6 +25,7 @@ export function NewSolicitudForm({ onCreated }: { onCreated: (s: any) => void })
     try {
       const created = await apiPost("/solicitudes/", payload);
       onCreated(created);
+      console.log("✅ Solicitud creada:", created);
       setDesc("");
       setTipo(1);
     } catch (error) {
