@@ -1,3 +1,4 @@
+//pages/FuncionarioPage.tsx
 import { NewSolicitudForm } from "../components/NewSolicitudForm";
 import { SolicitudesList } from "../components/SolicitudesList";
 

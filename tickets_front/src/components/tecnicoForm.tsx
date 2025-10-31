@@ -1,3 +1,4 @@
+//components/tecnicoForm.tsx
 import { useState } from "react";
 import type { Tecnico } from "../services/tecnicoServices.tsx";
 import { addTecnico } from "../controller/tecnicoController";

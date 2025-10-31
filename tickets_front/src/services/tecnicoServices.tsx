@@ -1,3 +1,4 @@
+//services/tecnicoServices.tsx
 const API_URL = "api/tecnicos/";
 
 export interface Tecnico {
